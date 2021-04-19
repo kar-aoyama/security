@@ -1,0 +1,45 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.2.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.lzl'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	compile 'org.springframework.security.oauth:spring-security-oauth2:2.3.3.RELEASE'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compile group: 'org.redisson', name: 'redisson-spring-boot-starter', version: '3.13.3'
+    compile 'cn.hutool:hutool-all:5.6.2'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'mysql:mysql-connector-java'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	testImplementation 'org.springframework.security:spring-security-test'
+	compile 'org.apache.commons:commons-pool2:2.8.0'
+	compile 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.4.4'
+	compile 'com.alibaba:fastjson:1.2.76'
+
+	testCompile'junit:junit:4.13.2'
+}
+
+test {
+	useJUnitPlatform()
+}
